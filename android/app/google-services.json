@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1045599588702",
+    "project_id": "al-mullah-asignment",
+    "storage_bucket": "al-mullah-asignment.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045599588702:android:d702aa2ba09b2f37bbffcf",
+        "android_client_info": {
+          "package_name": "com.example.al_mullah_asignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASBhCiWQfmyHVB9fPFwBCtBbafKrNlWB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
