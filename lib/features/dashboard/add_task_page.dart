@@ -1,4 +1,7 @@
+import 'package:al_mullah_asignment/common/common_button.dart';
+import 'package:al_mullah_asignment/constants/strings.dart';
 import 'package:al_mullah_asignment/features/dashboard/cubit/task_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,64 +19,57 @@ class _AddTaskPageState extends State<AddTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Task"),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // Text Field for Task Description
             TextField(
               controller: taskController,
               decoration: InputDecoration(
-                labelText: 'Enter Task',
+                labelText: AppStrings.taskName.tr(),
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 16),
-
-            // Text Field for DateTime picker
             TextField(
               controller: dateController,
               decoration: InputDecoration(
-                labelText: 'Select Date & Time',
+                labelText: AppStrings.dateTime.tr(),
                 border: OutlineInputBorder(),
               ),
               readOnly: true,
               onTap: () {
-                // Open Date Picker
                 _selectDate(context);
               },
             ),
             SizedBox(height: 16),
-
-            // Save and Clear buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
+                CommonButton(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  text: AppStrings.save.tr(),
+                  onTap: () {
                     if (taskController.text.isNotEmpty &&
                         selectedDateTime != null) {
-                      // Add task via Cubit
                       context
                           .read<TaskCubit>()
                           .addTask(taskController.text, selectedDateTime!);
                       Navigator.pop(context);
                     } else {
-                      // Show a snack bar or error message if validation fails
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                        const SnackBar(
                             content:
                                 Text("Please enter both task and date/time")),
                       );
                     }
                   },
-                  child: Text("Save Task"),
                 ),
-                ElevatedButton(
-                  onPressed: () {
+                CommonButton(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  text: AppStrings.clear.tr(),
+                  onTap: () {
                     // Clear both text fields
                     taskController.clear();
                     dateController.clear();
@@ -81,7 +77,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       selectedDateTime = null;
                     });
                   },
-                  child: Text("Clear"),
                 ),
               ],
             ),

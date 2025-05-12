@@ -12,9 +12,9 @@ class StopwatchCubit extends Cubit<StopwatchState> {
   bool _isRunning = false;
 
   void startStopwatch() {
-    if (_isRunning) return; // Don't start if it's already running
+    if (_isRunning) return; 
     _isRunning = true;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _seconds++;
       emit(StopwatchRunning(seconds: _seconds));
     });

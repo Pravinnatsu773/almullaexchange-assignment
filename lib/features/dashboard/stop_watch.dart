@@ -1,4 +1,6 @@
+import 'package:al_mullah_asignment/constants/strings.dart';
 import 'package:al_mullah_asignment/features/dashboard/cubit/stop_watch_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,9 +8,6 @@ class StopwatchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Stopwatch'),
-      ),
       body: BlocProvider(
         create: (_) => StopwatchCubit(),
         child: StopwatchView(),
@@ -55,7 +54,9 @@ class StopwatchView extends StatelessWidget {
                     )),
                 child: Center(
                   child: Text(
-                    timerText,
+                    context.locale.languageCode == 'en'
+                        ? timerText
+                        : convertTimeToArabic(timerText),
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -97,4 +98,21 @@ class StopwatchView extends StatelessWidget {
       },
     );
   }
+}
+
+String convertTimeToArabic(String time) {
+  const numbersMap = {
+    '0': '٠',
+    '1': '١',
+    '2': '٢',
+    '3': '٣',
+    '4': '٤',
+    '5': '٥',
+    '6': '٦',
+    '7': '٧',
+    '8': '٨',
+    '9': '٩',
+  };
+
+  return time.split('').map((char) => numbersMap[char] ?? char).join();
 }

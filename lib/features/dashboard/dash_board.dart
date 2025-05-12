@@ -1,3 +1,4 @@
+import 'package:al_mullah_asignment/constants/strings.dart';
 import 'package:al_mullah_asignment/features/dashboard/app_drawer.dart';
 import 'package:al_mullah_asignment/features/dashboard/cubit/tab_cubit.dart';
 import 'package:al_mullah_asignment/features/dashboard/encryption_page.dart';
@@ -12,46 +13,47 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const AppDrawer(),
-      appBar: AppBar(title: Text('welcome'.tr())),
-      body: BlocBuilder<TabCubit, TabState>(
-        builder: (context, state) {
-          // List of pages to display based on the selected tab
-          final List<Widget> pages = [
-            const EncryptionPage(),
-            const TodoPage(),
-            StopwatchPage(),
-          ];
+    return BlocBuilder<TabCubit, TabState>(
+      builder: (context, state) {
+        // List of pages to display based on the selected tab
+        final List<Widget> pages = [
+          EncryptionPage(),
+          TodoPage(),
+          StopwatchPage(),
+        ];
 
-          // Display the page for the selected tab index
-          return pages[state.selectedIndex];
-        },
-      ),
-      bottomNavigationBar: BlocBuilder<TabCubit, TabState>(
-        builder: (context, state) {
-          return BottomNavigationBar(
+        final List<String> tabTitle = [
+          AppStrings.encryption,
+          AppStrings.toDo,
+          AppStrings.stopwatch,
+        ];
+
+        return Scaffold(
+          drawer: const AppDrawer(),
+          appBar: AppBar(title: Text(tabTitle[state.selectedIndex].tr())),
+          body: pages[state.selectedIndex],
+          bottomNavigationBar: BottomNavigationBar(
             currentIndex: state.selectedIndex,
             onTap: (index) {
               context.read<TabCubit>().changeTab(index); // Change tab index
             },
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.lock),
-                label: 'Encryption',
+                label: tabTitle[0],
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.check_circle),
-                label: 'To-Do',
+                label: tabTitle[1],
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.timer),
-                label: 'Stopwatch',
+                label: tabTitle[2],
               ),
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

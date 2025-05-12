@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
           icon: const Icon(Icons.login),
           label: Text("sign_in_with_google".tr()),
           onPressed: () {
-            context.read<AuthCubit>().signInWithGoogle();
+            context.read<AuthCubit>().signInWithGoogle(context);
           },
         ),
       ),

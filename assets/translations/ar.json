@@ -1,4 +1,25 @@
 {
-    "welcome": "أهلا بك",
-    "sign_in_with_google": "Sign in with Google"
-  }
+  "demoApp": "NA",
+  "signInWithGoogle": "تسجيل الدخول باستخدام جوجل",
+  "welcome": "أهلا بك",
+  "encryption": "التشفير",
+  "toDo": "لكى يفعل",
+  "stopwatch": "ساعة التوقيف",
+  "message": "رسالة",
+  "secretKey": "المفتاح السري",
+  "encrypt": "تشفير",
+  "decrypt": "فك تشفير",
+  "delete": "حذف",
+  "confirmDeletionMessage": "هل أنت متأكد أنك تريد حذف هذه المهمة؟",
+  "taskName": "اسم المهمة",
+  "dateTime": "التاريخ و الوقت",
+  "save": "أضف",
+  "clear": "واضح",
+  "ok": "حسنا",
+  "cancel": "إلغاء",
+  "changeLanguage": "إلغاء",
+  "logout": "تسجيل خروج",
+  "confirmLogoutMessage": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "encryptedDecryptedMessage":"رسالة مشفرة/مفككة التشفير",
+    "todoNoTasksAvailable":"لا توجد مهام متاحة."
+}
